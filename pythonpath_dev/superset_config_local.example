@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 #
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
@@ -15,12 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-/app/docker/docker-init.sh
 
-# TODO: copy config overrides from ENV vars
+#
+# This is an example "local" configuration file. In order to set/override config
+# options that ONLY apply to your local environment, simply copy/rename this file
+# to docker/pythonpath/superset_config_docker.py
+# It ends up being imported by docker/superset_config.py which is loaded by
+# superset/config.py
+#
 
-# TODO: run celery in detached state
-export SERVER_THREADS_AMOUNT=8
-# start up the web server
-
-/usr/bin/run-server.sh
+SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://pguser:pgpwd@some.host/superset"
+SQLALCHEMY_ECHO = True
